@@ -1,0 +1,37 @@
+{{ title }}
+
+<h1>Audio Devices</h1>
+<button type="button" *ngFor="let audioDevice of audioDevices" (click)="selectAudioDevice(audioDevice)">{{audioDevice.label}}</button>
+
+<div *ngIf="audioDevice !== null">
+  <hr>
+  <h1>Select your video device</h1>
+  <button type="button" *ngFor="let videoDevice of videoDevices" (click)="selectVideoDevice(videoDevice)">{{videoDevice.label}}</button>
+</div>
+
+
+<hr>
+
+<!-- <p>{{audioDevices[0].kind}} -- {{audioDevices[0].label}} -- ID = {{audioDevices[0].deviceId}}</p> -->
+<!-- <p>{{videoDevices[0].label}} -- ID = {{videoDevices[0].deviceId}}</p> -->
+
+<div>
+  <h1>Recorder</h1>
+
+  <video 
+    #videoElement 
+    width="320" 
+    height="240" 
+    controls
+    autoplay
+    playsInline>
+      
+    <source [src]="videoBlobUrl"/>
+  </video>
+
+  <br>
+  
+  <button id="btn-start-recording" (click)="startRecording()" [disabled]="!audioDevice || !videoDevice">Start Recording</button>
+  
+  <button id="btn-stop-recording" (click)="stopRecording()" [disabled]="!audioDevice || !videoDevice">Stop Recording</button>
+</div>
