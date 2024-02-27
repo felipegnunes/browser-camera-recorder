@@ -1,19 +1,24 @@
-{{ title }}
+<h1>Select your audio device</h1>
 
-<h1>Audio Devices</h1>
-<button type="button" *ngFor="let audioDevice of audioDevices" (click)="selectAudioDevice(audioDevice)">{{audioDevice.label}}</button>
+<ul>
+  <li *ngFor="let audioDevice of audioDevices">
+    <button type="button" (click)="selectAudioDevice(audioDevice)">{{audioDevice.label}}</button>
+  </li>
+</ul>
+
 
 <div *ngIf="audioDevice !== null">
   <hr>
   <h1>Select your video device</h1>
-  <button type="button" *ngFor="let videoDevice of videoDevices" (click)="selectVideoDevice(videoDevice)">{{videoDevice.label}}</button>
+
+  <ul>
+    <li *ngFor="let videoDevice of videoDevices">
+      <button type="button" (click)="selectVideoDevice(videoDevice)">{{videoDevice.label}}</button>
+    </li>
+  </ul>
 </div>
 
-
 <hr>
-
-<!-- <p>{{audioDevices[0].kind}} -- {{audioDevices[0].label}} -- ID = {{audioDevices[0].deviceId}}</p> -->
-<!-- <p>{{videoDevices[0].label}} -- ID = {{videoDevices[0].deviceId}}</p> -->
 
 <div>
   <h1>Recorder</h1>
